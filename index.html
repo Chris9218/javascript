@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Live</title>
+</head>
+<body>
+<script>
+    /*
+    Esercizio1 - Somma
+    */
+    var a, b, c, d, e;
+
+    a = 1;
+    b = 2;
+    c = 3;
+    d = 4;
+    e = 5;
+
+    var RisultatoSomma = a + b + c + d + e;
+    var RisultatoMedia = (RisultatoSomma / 5);
+
+    var risultatoEsercizio1 = "Dati i 5 valori:\na=" + a + ", b= " + b + ", c=" + c + ", d=" + d + ", e= " + e + "\n\n"
+        + "La somma è " + RisultatoSomma + "\n"
+        + "Il nome della somma è " + typeof RisultatoSomma + "\n"
+        + "La media è " + RisultatoMedia + "\n"
+        + "Il tipo della media è " + typeof RisultatoMedia + "\n";
+
+
+</script>
+<script>
+    /*
+    Esecizio2 - Quanti anni ha?
+    */
+    var CurrentYear = 2018;
+    var BornYear = 1991;
+
+    var age = CurrentYear - BornYear;
+    var ageDistance = 100 - age;
+
+    var risultatoEsercizio2 = "età = " + age + ", anni mancanti = " + ageDistance;
+    // console.log(risultatoEsercizio2);
+</script>
+<script>
+    /*
+    Esercizio3 - Gatti in fila
+    */
+
+    var cats = 44;
+    var catsPerRow = 6;
+    var rowNumber = cats / catsPerRow;
+    var roundedRowNumber = Math.ceil(rowNumber);
+    var remainer = cats % catsPerRow;
+    var missing = catsPerRow - remainer;
+    let risultatoEsercizio3 = "numero di file = " + roundedRowNumber + ", gatti mancanti = " + missing;
+</script>
+<script>
+    /*
+    Esercizio 4
+    */
+    var h, m, s;
+
+    var inputSeconds = 3725;
+    var secondsMinute = 60;
+    var secondsHour = 60 * secondsMinute;
+
+    h = Math.floor(inputSeconds / secondsHour);
+    m = Math.floor((inputSeconds % secondsHour) / secondsMinute);
+    s = inputSeconds % secondsHour % secondsMinute;
+
+    var result = h + " or" + (h === 1 ? "a" : "e") + "," + m + " minut" + (m <= 1 ? "o" : "i") + "," + s + " second" + (s <= 1 ? "o" : "i") + ",";
+
+    // console.log(result);
+
+</script>
+<script>
+    // var counter= 0;
+    //
+    // while (counter < 10) {
+    //     console.log("I'm waiting");
+    //
+    //     counter ++;
+    // }
+</script>
+<script>
+
+    /*
+    ESERCIZIO 6 CALDO FREDDO
+    */
+
+    var a = 15;
+    var b = 22;
+    var c = -10;
+
+    var caldo = 0;
+    var freddo = 0;
+
+    if (a > b && a > c) {
+        caldo = a;
+        freddo = b < c ? b : c;
+    } else if (b > a && b > c) {
+        caldo = b;
+        freddo = a < c ? a : c;
+    } else {
+        caldo = c;
+        freddo = b < a ? b : a;
+    }
+    var result = "Giornata più calda =" + caldo + ", giornata più fredda =" + freddo;
+    // console.log(result)
+
+</script>
+<script>
+    /*
+    * Il conta cifre
+    * scrivi un programma che dato un numero (massimo 9999) conti da quante cifre è contato
+    *
+    * esempi:
+    *  input 9
+    *  output 1 cifra
+    *  input 245
+    *  output 3 cifre
+    * */
+
+    var number = 1355;
+    var cifra = 0;
+
+    if (number < 0 || number >= 10000) {
+        throw Error("Valore non valido")
+    }
+
+    if (number >= 0 && number <= 9) {
+        cifra = 1;
+    } else if (number >= 10 && number <= 99) {
+        cifra = 2;
+    } else if (number >= 100 && number <= 999) {
+        cifra = 3;
+    } else if (number >= 1000 && number <= 9999) {
+        cifra = 4;
+    }
+    // console.log(cifra)
+
+</script>
+<script>
+    function Car(name, manufacturer){
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.toString = function (){
+            return name + ", " + manufacturer;
+        }
+    }
+    Car.prototype.year = undefined;
+
+    Object.prototype.saiThis = function(t){
+       return t;
+    }
+    var car1 = { name: "Fiesta", manufacturer: "Ford"};
+    var car2 = { name: "Panda", manufacturer: "Fiat"};
+    var car3 = new Car("Clio", "Renault");
+    car3.year = 2018;
+
+</script>
+<script>
+
+    function Card(face, suit) {
+
+        this.face = getFace(face);
+        this.suit = getSuit(suit);
+
+        function getFace(face){
+
+            if ((face < 0 || face > 9) || Number.isInteger(face) === false){
+                throw new Error("Argument out of range");
+            }
+
+            switch (face) {
+                case 0:
+                    return "Asso";
+                case 9:
+                    return "Re";
+                default:
+                    return (face + 1).toString();
+            }
+        }
+
+        function getSuit(suit){
+
+            switch (suit) {
+                case 0:
+                    return "Cuori";
+                case 1:
+                    return "Fiori";
+                case 2:
+                    return "Quadri";
+                case 3:
+                    return "Picche";
+                default:
+                    throw new Error("Argument out of range");
+            }
+        }
+
+    }
+
+
+    function CardDeck() {
+        this.shuffle = function (){
+            var face = Math.round(Math.random()* 9);
+            var suit = Math.round(Math.random()* 3);
+            return new Card(face, suit)
+        }
+    }
+
+    var cardDeck = new CardDeck();
+
+    // console.log(cardDeck);
+    // console.log(cardDeck.shuffle());
+
+</script>
+<script>
+   /*
+   * Operazioni tra array
+   * Scrivi un programma di dati
+   * 2 array di 10 elementi interi casuali compresi tra 1 e 10
+   * il tipo di operazione aritmetica da eseguire tra le seguenti
+   * addizione
+   * sottrazione
+   * moltiplicazione
+   * divisione
+   * esegui il calcolo tra ogni elemento dell'array salvando ciascun risultato in un terzo array di appoggio
+   * esempio:
+   * Input a[3, 7, 2, 5, 8, 1, 2, 5, 6, 4], b[9, 3, 1, 4, 7, 6, 5, 10, 1, 5], operazione = addizione
+   * output c=[12, 10, 3, 9, 15, 7, 7, 15, 7, 9]
+   * map
+   * foreach
+   * */
+
+   function operazioniTraArray (array1, array2, operazione) {
+       var array3= new Array();
+       for(var i = 0; i < array1.lenght; i++){
+           array3[i] = array1[i] + array2[i]
+       }
+       return array3;
+   }
+
+
+   var result = operazioniTraArray();
+
+   console.log(result);
+
+</script>
+<!--<script>-->
+
+<!--    function converter (value, unit, targetunit){-->
+
+<!--        this.value= getValue (value);-->
+<!--        this.unit= getUnit(unit);-->
+<!--        this.targetUnit= getTargetunit(targetunit);-->
+
+
+<!--        //var result =  ;-->
+
+<!--        return result;-->
+
+<!--    }-->
+
+
+<!--    const assert = require("assert");-->
+
+<!--    describe('converterTests', function(){-->
+<!--        it('convert 1000g in 1 Kg', function(){-->
+<!--            const result = converter(1000, 'g', 'Kg');-->
+<!--            assert.equal(result,1);-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>
